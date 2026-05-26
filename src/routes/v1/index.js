@@ -4,7 +4,6 @@ const router = express.Router();
 const authRoutes = require('./auth-routes');
 const blogRoutes = require('./blog-routes');
 const contactRoutes = require('./contact-routes');
-const projectRoutes = require('./project-routes');
 const callslipRoutes = require('./callslip-routes');
 const servicecallRoutes = require('./servicecall-routes');
 const categoryRoutes = require('./category-routes');
@@ -42,7 +41,6 @@ const instrumentMasterRoutes = require('./instrument-master-routes'); // Added i
 router.use('/auth', authRoutes);
 router.use('/blog', blogRoutes);
 router.use('/contact', contactRoutes);
-router.use('/project', projectRoutes);
 router.use('/callslip', callslipRoutes);
 router.use('/servicecall', servicecallRoutes);
 router.use('/category', categoryRoutes);

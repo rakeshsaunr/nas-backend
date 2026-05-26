@@ -2,7 +2,6 @@ module.exports = {
     AuthController: require('./auth-controller'),
     BlogController: require('./blog-controller'),
     ContactController: require('./contact-controller'),
-    ProjectController: require('./project-controller'),
     CallslipController: require('./callslip-controller'),
     ServicecallController: require('./servicecall-controller'),
     DepartmentController: require('./department-controller'),

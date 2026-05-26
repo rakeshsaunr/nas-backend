@@ -1,6 +1,5 @@
 const Blog = require('./blog-model');
 const Contact = require('./contact-model');
-const Project = require('./project-model');
 const OTP = require('./otp-model');
 const Stats = require('./stats-model');
 const Callslip = require('./callslip-model');
@@ -37,7 +36,6 @@ const InstrumentMaster = require('./instrument-master-model'); // Added instrume
 module.exports = {
   Blog,
   Contact,
-  Project,
   OTP,
   Stats,
   Callslip,

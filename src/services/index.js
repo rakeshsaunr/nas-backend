@@ -5,7 +5,6 @@ module.exports = {
     BlogService: require('./blog-service'),
     ContactService: require('./contact-service'),
     UploadService: require('./upload-service'),
-    ProjectService: require('./project-service'),
     CallslipService: require('./callslip-service'),
     ServiceCallService: require('./servicecall-service'),
     DepartmentService: require('./department-service'),
