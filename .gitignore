@@ -1,0 +1,6 @@
+node_modules
+.env
+
+src/utils/commands.txt
+logs
+.vercel
