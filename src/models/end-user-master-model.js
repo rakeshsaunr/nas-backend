@@ -14,6 +14,7 @@ const endUserMasterSchema = new mongoose.Schema(
     endUserCode: {
       type: String,
       unique: true,
+      trim: true,
     },
 
     // =====================================
@@ -24,6 +25,15 @@ const endUserMasterSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+    },
+
+    // =====================================
+    // CUSTOMER (from customer master)
+    // =====================================
+    customer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CustomerMaster",
+      required: true,
     },
 
     // =====================================
@@ -42,7 +52,7 @@ const endUserMasterSchema = new mongoose.Schema(
 
     designation: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Designation",
+      ref: "DesignationMaster",
       required: true,
     },
 
@@ -118,14 +128,9 @@ const endUserMasterSchema = new mongoose.Schema(
 endUserMasterSchema.pre("save", async function (next) {
   try {
     if (!this.endUserCode) {
-      const total =
-        await mongoose.models.EndUserMaster.countDocuments();
-
-      this.endUserCode = `ENDUSR-${String(
-        total + 1
-      ).padStart(4, "0")}`;
+      const total = await mongoose.models.EndUserMaster.countDocuments();
+      this.endUserCode = `ENDUSR-${String(total + 1).padStart(4, "0")}`;
     }
-
     next();
   } catch (error) {
     next(error);
@@ -138,7 +143,4 @@ endUserMasterSchema.pre("save", async function (next) {
 
 module.exports =
   mongoose.models.EndUserMaster ||
-  mongoose.model(
-    "EndUserMaster",
-    endUserMasterSchema
-  );
+  mongoose.model("EndUserMaster", endUserMasterSchema);

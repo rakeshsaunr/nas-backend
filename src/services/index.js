@@ -11,6 +11,7 @@ module.exports = {
     DepartmentService: require('./department-service'),
     DivisionMasterService: require('./division-master-service'), // added division-master service
     CustomerService: require('./customer-master-service'),
+    CustomerTypeMasterService: require('./customer-type-master-service'), // added customer-type-master service
     IncomeService: require('./income-service'),
     InvoiceService: require('./invoice-service'),
     ClientService: require('./client-service'),
@@ -21,6 +22,7 @@ module.exports = {
     EnquiryService: require('./enquiry-service'), // added enquiry service
     ReportService: require('./report-service'), // added report service
     CallEntryService: require('./call-entry-service'), // added call-entry service
+    CallEntryFormService: require('./call-entry-form-service'), // added call-entry-form service
     StatusMasterService: require('./status-master-service'), // added status-master service
     CallMasterService: require('./call-master-service'), // added call-master service
     CallTypeMasterService: require('./call-type-master-service'), // added call-type-master service

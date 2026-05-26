@@ -11,6 +11,7 @@ const Expense = require('./expense-model');
 const Department = require('./department-model');
 const DivisionMaster = require('./division-master-model'); // Added division-master model
 const Customer = require('./customer-master-model');
+const CustomerTypeMaster = require('./customer-type-master-model'); // Added customer-type-master model
 const Income = require('./income-model');
 const Invoice = require('./invoice-model');
 const Client = require('./client-model');
@@ -20,6 +21,7 @@ const Employee = require('./employee-master-model'); // Added employee model
 const Enquiry = require('./enquiry-model'); // Added enquiry model
 const Report = require('./report-model'); // Added report model
 const CallEntry = require('./call-entry-model'); // Added call-entry model
+const CallEntryForm = require('./call-entry-form-model'); // Added call-entry-form model
 const StatusMaster = require('./status-master-model'); // Added status-master model
 const CallMaster = require('./call-master-model'); // Added call-master model
 const CallTypeMaster = require('./call-type-master-model'); // Added call-type-master model
@@ -46,6 +48,7 @@ module.exports = {
   Department,
   DivisionMaster, // Exported division-master model
   Customer,
+  CustomerTypeMaster, // Exported customer-type-master model
   Income,
   Invoice,
   Client,
@@ -55,6 +58,7 @@ module.exports = {
   Enquiry, // Exported enquiry model
   Report, // Exported report model
   CallEntry, // Exported call-entry model
+  CallEntryForm, // Exported call-entry-form model
   StatusMaster, // Exported status-master model
   CallMaster, // Exported call-master model
   CallTypeMaster, // Exported call-type-master model

@@ -13,6 +13,7 @@ const expenseRoutes = require('./expense-routes');
 const departmentRoutes = require('./department-routes');
 const divisionMasterRoutes = require('./division-master-routes'); // Added division-master route
 const customerMasterRoutes = require('./customer-master-routes'); // Added customer-master route
+const customerTypeMasterRoutes = require('./customer-type-master-routes'); // Added customer-type-master route
 const incomeRoutes = require('./income-routes');
 const invoiceRoutes = require('./invoice-routes');
 const clientRoutes = require('./client-routes');
@@ -23,6 +24,7 @@ const enquiryRoutes = require('./enquiry-routes'); // Added enquiry route
 const newsletterRoutes = require('./newsletter-routes'); // Added newsletter route
 const reportRoutes = require('./report-routes'); // Added report route
 const callEntryRoutes = require('./call-entry-routes'); // Added call-entry route
+const callEntryFormRoutes = require('./call-entry-form-routes'); // Added call-entry-form route
 const statusMasterRoutes = require('./status-master-routes'); // Added status-master route
 const callMasterRoutes = require('./call-master-routes'); // Added call-master route
 const callTypeMasterRoutes = require('./call-type-master-routes'); // Added call-type-master route
@@ -49,6 +51,7 @@ router.use('/expense', expenseRoutes);
 router.use('/department', departmentRoutes);
 router.use('/division-master', divisionMasterRoutes); // Register division-master route
 router.use('/customer-master', customerMasterRoutes); // Register customer-master route
+router.use('/customer-type-master', customerTypeMasterRoutes); // Register customer-type-master route
 router.use('/income', incomeRoutes);
 router.use('/invoice', invoiceRoutes);
 router.use('/client', clientRoutes);
@@ -59,6 +62,7 @@ router.use('/enquiry', enquiryRoutes); // Register enquiry route
 router.use('/newsletter', newsletterRoutes); // Register newsletter route
 router.use('/report', reportRoutes); // Register report route
 router.use('/call-entry', callEntryRoutes); // Register call-entry route
+router.use('/call-entry-form', callEntryFormRoutes); // Register call-entry-form route
 router.use('/status-master', statusMasterRoutes); // Register status-master route
 router.use('/call-master', callMasterRoutes); // Register call-master route
 router.use('/call-type-master', callTypeMasterRoutes); // Register call-type-master route

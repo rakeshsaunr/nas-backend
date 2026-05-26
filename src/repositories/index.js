@@ -10,6 +10,7 @@ module.exports = {
     DepartmentRepository: require('./department-repository'),
     DivisionMasterRepository: require('./division-master-repository'), // added division-master repository
     CustomerRepository: require('./customer-master-repository'),
+    CustomerTypeMasterRepository: require('./customer-type-master-repository'), // added customer-type-master repository
     IncomeRepository: require('./income-repository'),
     InvoiceRepository: require('./invoice-repository'),
     ClientRepository: require('./client-repository'),
@@ -21,6 +22,7 @@ module.exports = {
     EnquiryRepository: require('./enquiry-repository'), // added enquiry repository
     ReportRepository: require('./report-repository'), // added report repository
     CallEntryRepository: require('./call-entry-repository'), // added call-entry repository
+    CallEntryFormRepository: require('./call-entry-form-repository'), // added call-entry-form repository
     StatusMasterRepository: require('./status-master-repository'), // added status-master repository
     CallMasterRepository: require('./call-master-repository'), // added call-master repository
     CallTypeMasterRepository: require('./call-type-master-repository'), // added call-type-master repository

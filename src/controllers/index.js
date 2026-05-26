@@ -8,6 +8,7 @@ module.exports = {
     DepartmentController: require('./department-controller'),
     DivisionMasterController: require('./division-master-controller'), // Added division-master controller
     CustomerController: require('./customer-master-controller'),
+    CustomerTypeMasterController: require('./customer-type-master-controller'), // Added customer-type-master controller
     IncomeController: require('./income-controller'),
     InvoiceController: require('./invoice-controller'),
     ClientController: require('./client-controller'),
@@ -19,6 +20,7 @@ module.exports = {
     EnquiryController: require('./enquiry-controller'), // Added enquiry controller
     ReportController: require('./report-controller'), // Added report controller
     CallEntryController: require('./call-entry-controller'), // Added call-entry controller
+    CallEntryFormController: require('./call-entry-form-controller'), // Added call-entry-form controller
     StatusMasterController: require('./status-master-controller'), // Added status-master controller
     CallMasterController: require('./call-master-controller'), // Added call-master controller
     CallTypeMasterController: require('./call-type-master-controller'), // Added call-type-master controller
