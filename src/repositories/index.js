@@ -20,7 +20,6 @@ module.exports = {
     EmployeeRepository: require('./employee-master-repository'),
     EnquiryRepository: require('./enquiry-repository'), // added enquiry repository
     ReportRepository: require('./report-repository'), // added report repository
-    CallEntryRepository: require('./call-entry-repository'), // added call-entry repository
     CallEntryFormRepository: require('./call-entry-form-repository'), // added call-entry-form repository
     StatusMasterRepository: require('./status-master-repository'), // added status-master repository
     CallMasterRepository: require('./call-master-repository'), // added call-master repository
@@ -34,4 +33,7 @@ module.exports = {
     EndUserMasterRepository: require('./end-user-master-repository'), // added end-user-master repository
     CallNatureMasterRepository: require('./call-nature-master-repository'), // added call-nature-master repository
     InstrumentMasterRepository: require('./instrument-master-repository'), // added instrument-master repository
+    DailyCallsSheetRepository: require('./daily-calls-sheet-repository'), // added daily-calls-sheet repository
+    TechnicianMasterRepository: require('./technician-master-repository'), // added technician-master repository
+    CallsAssigningRepository: require('./calls-assigning-repository'), // added calls-assigning repository
 };

@@ -20,7 +20,6 @@ module.exports = {
     OrderService: require('./order-service'),
     EnquiryService: require('./enquiry-service'), // added enquiry service
     ReportService: require('./report-service'), // added report service
-    CallEntryService: require('./call-entry-service'), // added call-entry service
     CallEntryFormService: require('./call-entry-form-service'), // added call-entry-form service
     StatusMasterService: require('./status-master-service'), // added status-master service
     CallMasterService: require('./call-master-service'), // added call-master service
@@ -34,4 +33,7 @@ module.exports = {
     EndUserMasterService: require('./end-user-master-service'), // added end-user-master service
     CallNatureMasterService: require('./call-nature-master-service'), // added call-nature-master service
     InstrumentMasterService: require('./instrument-master-service'), // added instrument-master service
+    DailyCallsSheetService: require('./daily-calls-sheet-service'), // added daily-calls-sheet service
+    TechnicianMasterService: require('./technician-master-service'), // added technician-master service
+    CallsAssigningService: require('./calls-assigning-service'), // added calls-assigning service
 };

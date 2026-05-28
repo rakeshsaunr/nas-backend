@@ -18,7 +18,6 @@ module.exports = {
     EmployeeController: require('./employee-master-controller'), // Added employee controller
     EnquiryController: require('./enquiry-controller'), // Added enquiry controller
     ReportController: require('./report-controller'), // Added report controller
-    CallEntryController: require('./call-entry-controller'), // Added call-entry controller
     CallEntryFormController: require('./call-entry-form-controller'), // Added call-entry-form controller
     StatusMasterController: require('./status-master-controller'), // Added status-master controller
     CallMasterController: require('./call-master-controller'), // Added call-master controller
@@ -32,4 +31,7 @@ module.exports = {
     EndUserMasterController: require('./end-user-master-controller'), // Added end-user-master controller
     CallNatureMasterController: require('./call-nature-master-controller'), // Added call-nature-master controller
     InstrumentMasterController: require('./instrument-master-controller'), // Added instrument-master controller
+    DailyCallsSheetController: require('./daily-calls-sheet-controller'), // Added daily-calls-sheet controller
+    TechnicianMasterController: require('./technician-master-controller'), // Added technician-master controller
+    CallsAssigningController: require('./calls-assigning-controller'), // Added calls-assigning controller
 };

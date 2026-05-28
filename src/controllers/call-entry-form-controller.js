@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const CallEntry = require("../models/call-entry-form-model");
+const cloudinary = require("../config/cloudinary");
 
 // CREATE
 const createCallEntryController = async (req, res) => {
@@ -26,8 +27,26 @@ const createCallEntryController = async (req, res) => {
       });
     }
 
+    let attachmentData = {};
+
+    // ATTACHMENT
+    if (req.files?.attachment?.[0]) {
+      attachmentData = {
+        attachment: {
+          url: req.files.attachment[0].path,
+          public_id: req.files.attachment[0].filename,
+        },
+      };
+    }
+
+    // Merge body and attachment
+    const callEntryData = {
+      ...req.body,
+      ...attachmentData,
+    };
+
     // Create the call entry
-    const data = await CallEntry.create(req.body);
+    const data = await CallEntry.create(callEntryData);
 
     // Repopulate the record to send all populated fields back
     const populatedData = await CallEntry.findById(data._id)
@@ -39,7 +58,8 @@ const createCallEntryController = async (req, res) => {
       .populate("natureOfCall")
       .populate("instrument")
       .populate("problemDetails")
-      .populate("callUrgency");
+      .populate("callUrgency")
+      .populate("engineerAssigned");
 
     return res.status(201).json({
       success: true,
@@ -73,6 +93,7 @@ const getAllCallEntriesController = async (req, res) => {
       .populate("instrument")
       .populate("problemDetails")
       .populate("callUrgency")
+      .populate("engineerAssigned")
       .sort({ createdAt: -1 });
 
     return res.status(200).json({
@@ -109,7 +130,8 @@ const getCallEntryByIdController = async (req, res) => {
       .populate("natureOfCall")
       .populate("instrument")
       .populate("problemDetails")
-      .populate("callUrgency");
+      .populate("callUrgency")
+      .populate("engineerAssigned");
 
     if (!data) {
       return res.status(404).json({
@@ -142,8 +164,33 @@ const updateCallEntryController = async (req, res) => {
       });
     }
 
+    // Find old entry to get old attachment
+    const oldCall = await CallEntry.findById(id);
+
+    if (!oldCall) {
+      return res.status(404).json({
+        success: false,
+        message: "Call Entry not found",
+      });
+    }
+
+    let data = { ...req.body };
+
+    // UPDATE ATTACHMENT
+    if (req.files?.attachment?.[0]) {
+      // delete old image
+      if (oldCall.attachment?.public_id) {
+        await cloudinary.uploader.destroy(oldCall.attachment.public_id);
+      }
+
+      data.attachment = {
+        url: req.files.attachment[0].path,
+        public_id: req.files.attachment[0].filename,
+      };
+    }
+
     // Update and return the populated document
-    const data = await CallEntry.findByIdAndUpdate(id, req.body, {
+    const updatedData = await CallEntry.findByIdAndUpdate(id, data, {
       new: true,
       runValidators: true,
     })
@@ -155,9 +202,10 @@ const updateCallEntryController = async (req, res) => {
       .populate("natureOfCall")
       .populate("instrument")
       .populate("problemDetails")
-      .populate("callUrgency");
+      .populate("callUrgency")
+      .populate("engineerAssigned");
 
-    if (!data) {
+    if (!updatedData) {
       return res.status(404).json({
         success: false,
         message: "Call Entry not found",
@@ -167,7 +215,7 @@ const updateCallEntryController = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Updated successfully",
-      data,
+      data: updatedData,
     });
   } catch (error) {
     return res.status(500).json({
@@ -189,7 +237,80 @@ const deleteCallEntryController = async (req, res) => {
       });
     }
 
-    const data = await CallEntry.findByIdAndDelete(id);
+    const data = await CallEntry.findById(id);
+
+    if (!data) {
+      return res.status(404).json({
+        success: false,
+        message: "Call Entry not found",
+      });
+    }
+
+    // DELETE ATTACHMENT
+    if (data.attachment?.public_id) {
+      await cloudinary.uploader.destroy(data.attachment.public_id);
+    }
+
+    await CallEntry.findByIdAndDelete(id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Deleted successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// ASSIGN ENGINEER
+const assignCall = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { engineerAssigned, assignRemark } = req.body;
+
+    // Validate Call Entry id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Call Entry ID",
+      });
+    }
+
+    // Validate engineerAssigned id
+    if (!engineerAssigned || !mongoose.Types.ObjectId.isValid(engineerAssigned)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid engineerAssigned ID",
+      });
+    }
+
+    // Prepare update fields
+    const updateObj = {
+      engineerAssigned,
+      assignRemark,
+      assignedDate: new Date(),
+      callStatus: "Assigned",
+    };
+
+    // Update and populate all required fields
+    const data = await CallEntry.findByIdAndUpdate(
+      id,
+      updateObj,
+      { new: true, runValidators: true }
+    )
+      .populate("customer")
+      .populate("customerType")
+      .populate("department")
+      .populate("endUser")
+      .populate("callType")
+      .populate("natureOfCall")
+      .populate("instrument")
+      .populate("problemDetails")
+      .populate("callUrgency")
+      .populate("engineerAssigned");
 
     if (!data) {
       return res.status(404).json({
@@ -200,7 +321,8 @@ const deleteCallEntryController = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Deleted successfully",
+      message: "Engineer assigned successfully",
+      data,
     });
   } catch (error) {
     return res.status(500).json({
@@ -216,4 +338,5 @@ module.exports = {
   getCallEntryById: getCallEntryByIdController,
   updateCallEntry: updateCallEntryController,
   deleteCallEntry: deleteCallEntryController,
+  assignCall: assignCall,
 };

@@ -19,7 +19,6 @@ const Order = require('./order-model');
 const Employee = require('./employee-master-model'); // Added employee model
 const Enquiry = require('./enquiry-model'); // Added enquiry model
 const Report = require('./report-model'); // Added report model
-const CallEntry = require('./call-entry-model'); // Added call-entry model
 const CallEntryForm = require('./call-entry-form-model'); // Added call-entry-form model
 const StatusMaster = require('./status-master-model'); // Added status-master model
 const CallMaster = require('./call-master-model'); // Added call-master model
@@ -32,6 +31,9 @@ const SupportPeriodMaster = require('./support-period-master-model'); // Added s
 const DesignationMaster = require('./designation-master-model'); // Added designation-master model
 const EndUserMaster = require('./end-user-master-model'); // Added end-user-master model
 const InstrumentMaster = require('./instrument-master-model'); // Added instrument-master model
+const DailyCallSheet = require('./daily-call-sheet-model'); // Added daily-call-sheet model
+const TechnicianMaster = require('./technician-master-model'); // Added technician-master model
+const CallsAssigning = require('./calls-assigning-model'); // Added calls-assigning model
 
 module.exports = {
   Blog,
@@ -55,7 +57,6 @@ module.exports = {
   Employee, // Exported employee model
   Enquiry, // Exported enquiry model
   Report, // Exported report model
-  CallEntry, // Exported call-entry model
   CallEntryForm, // Exported call-entry-form model
   StatusMaster, // Exported status-master model
   CallMaster, // Exported call-master model
@@ -68,4 +69,7 @@ module.exports = {
   DesignationMaster, // Exported designation-master model
   EndUserMaster, // Exported end-user-master model
   InstrumentMaster, // Exported instrument-master model
+  DailyCallSheet, // Exported daily-call-sheet model
+  TechnicianMaster, // Exported technician-master model
+  CallsAssigning, // Exported calls-assigning model
 };

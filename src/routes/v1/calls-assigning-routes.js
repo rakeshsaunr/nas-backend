@@ -1,8 +1,12 @@
+// =====================================
+// routes/calls-assigning-routes.js
+// =====================================
+
 const express = require("express");
 const router = express.Router();
 
 const controller = require(
-  "../../controllers/call-entry-form-controller"
+  "../../controllers/calls-assigning-controller"
 );
 
 // =====================================
@@ -22,20 +26,21 @@ router.post(
   "/",
   upload.fields([
     { name: "attachment", maxCount: 1 },
+    { name: "audio", maxCount: 1 },
   ]),
-  controller.createCallEntry
+  controller.createCallsAssigning
 );
 
 // GET ALL
 router.get(
   "/",
-  controller.getAllCallEntries
+  controller.getCallsAssigning
 );
 
 // GET SINGLE
 router.get(
   "/:id",
-  controller.getCallEntryById
+  controller.getCallAssigning
 );
 
 // UPDATE
@@ -43,20 +48,15 @@ router.put(
   "/:id",
   upload.fields([
     { name: "attachment", maxCount: 1 },
+    { name: "audio", maxCount: 1 },
   ]),
-  controller.updateCallEntry
+  controller.updateCallsAssigning
 );
 
 // DELETE
 router.delete(
   "/:id",
-  controller.deleteCallEntry
-);
-
-// ASSIGN ENGINEER
-router.put(
-  "/assign/:id",
-  controller.assignCall
+  controller.deleteCallsAssigning
 );
 
 module.exports = router;

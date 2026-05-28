@@ -112,6 +112,37 @@ const callEntrySchema = new mongoose.Schema(
       default: 1,
     },
 
+    // =====================================
+    // ENGINEER ASSIGNED -> now EmployeeMaster reference
+    // =====================================
+
+    engineerAssigned: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "EmployeeMaster",
+    },
+
+    assignedDate: {
+      type: Date,
+    },
+
+    assignRemark: {
+      type: String,
+      trim: true,
+    },
+
+    callStatus: {
+      type: String,
+      enum: [
+        "Pending",
+        "Assigned",
+        "In Progress",
+        "Hold",
+        "Completed",
+        "Closed",
+      ],
+      default: "Pending",
+    },
+
     callUrgency: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "CallUrgency",
@@ -124,6 +155,28 @@ const callEntrySchema = new mongoose.Schema(
     callNotedBy: {
       type: String,
       trim: true,
+    },
+
+    // =====================================
+    // CLOUDINARY FILES -- Only ATTACHMENT (NO audio)
+    // =====================================
+
+    attachment: {
+      public_id: {
+        type: String,
+      },
+      url: {
+        type: String,
+      },
+    },
+
+    // =====================================
+    // STATUS
+    // =====================================
+
+    isActive: {
+      type: Boolean,
+      default: true,
     },
   },
   {

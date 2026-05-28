@@ -22,7 +22,6 @@ const employeeRoutes = require('./employee-master-routes'); // Added employee ro
 const enquiryRoutes = require('./enquiry-routes'); // Added enquiry route
 const newsletterRoutes = require('./newsletter-routes'); // Added newsletter route
 const reportRoutes = require('./report-routes'); // Added report route
-const callEntryRoutes = require('./call-entry-routes'); // Added call-entry route
 const callEntryFormRoutes = require('./call-entry-form-routes'); // Added call-entry-form route
 const statusMasterRoutes = require('./status-master-routes'); // Added status-master route
 const callMasterRoutes = require('./call-master-routes'); // Added call-master route
@@ -36,6 +35,9 @@ const designationMasterRoutes = require('./designation-master-routes'); // Added
 const endUserMasterRoutes = require('./end-user-routes'); // Added end-user-master route
 const callNatureMasterRoutes = require('./call-nature-master-routes'); // Added call-nature-master route
 const instrumentMasterRoutes = require('./instrument-master-routes'); // Added instrument-master route
+const dailyCallsSheetRoutes = require('./daily-calls-sheet-routes'); // Added daily-calls-sheet route
+const technicianMasterRoutes = require('./technician-master-routes'); // Added technician-master route
+const callsAssigningRoutes = require('./calls-assigning-routes'); // Added calls-assigning route
 
 // Register routes
 router.use('/auth', authRoutes);
@@ -59,7 +61,6 @@ router.use('/employee-master', employeeRoutes); // Register employee route
 router.use('/enquiry', enquiryRoutes); // Register enquiry route
 router.use('/newsletter', newsletterRoutes); // Register newsletter route
 router.use('/report', reportRoutes); // Register report route
-router.use('/call-entry', callEntryRoutes); // Register call-entry route
 router.use('/call-entry-form', callEntryFormRoutes); // Register call-entry-form route
 router.use('/status-master', statusMasterRoutes); // Register status-master route
 router.use('/call-master', callMasterRoutes); // Register call-master route
@@ -73,5 +74,8 @@ router.use('/designation-master', designationMasterRoutes); // Register designat
 router.use('/end-user-master', endUserMasterRoutes); // Register end-user-master route
 router.use('/call-nature-master', callNatureMasterRoutes); // Register call-nature-master route
 router.use('/instrument-master', instrumentMasterRoutes); // Register instrument-master route
+router.use('/daily-calls-sheet', dailyCallsSheetRoutes); // Register daily-calls-sheet route
+router.use('/technician-master', technicianMasterRoutes); // Register technician-master route
+router.use('/calls-assigning', callsAssigningRoutes); // Register calls-assigning route
 
 module.exports = router;
