@@ -59,8 +59,8 @@ const callEntrySchema = new mongoose.Schema(
     },
 
     callLoggedBy: {
-      type: String,
-      trim: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "EmployeeMaster",
     },
 
     warrantyInformation: {
@@ -153,8 +153,8 @@ const callEntrySchema = new mongoose.Schema(
     // =====================================
 
     callNotedBy: {
-      type: String,
-      trim: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "EmployeeMaster",
     },
 
     // =====================================
